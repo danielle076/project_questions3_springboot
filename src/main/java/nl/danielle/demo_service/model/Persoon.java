@@ -8,18 +8,17 @@ public class Persoon {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_nr")
     public long id;
 
-    @Column(length = 80)
+    @Column(name = "first_name", length = 80)
     public String voornaam;
 
-    @Column(length = 80)
+    @Column(name = "last_name", length = 80)
     public String achternaam;
 
-    @Column(length = 120)
+    @Column(name = "city", length = 120)
     public String woonplaats;
-
-    // getters and setters
 
     public long getId() {
         return id;
