@@ -49,4 +49,14 @@ public class PersoonServiceImpl implements PersoonService {
     public Iterable<Persoon> findByLastname(String lastname) {
         return persoonRepository.findByAchternaam(lastname);
     }
+
+    @Override
+    public void updatePersoon(long nr, Persoon persoon) {
+        if (!persoonRepository.existsById(nr)) throw new RecordNotFoundException();
+        Persoon existingPersoon = persoonRepository.findById(nr).get();
+        existingPersoon.setVoornaam(persoon.getVoornaam());
+        existingPersoon.setAchternaam(persoon.getAchternaam());
+        existingPersoon.setWoonplaats(persoon.getWoonplaats());
+        persoonRepository.save(existingPersoon);
+    }
 }

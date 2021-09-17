@@ -9,4 +9,5 @@ public interface PersoonService {
     void save(Persoon persoon);
     void deleteById(long nr);
     Iterable<Persoon> findByLastname(String lastname);
+    public abstract void updatePersoon(long id, Persoon person);
 }
