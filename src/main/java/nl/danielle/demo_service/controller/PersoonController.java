@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class PersoonController {
-
     @Autowired
     private PersoonService persoonService;
 
@@ -17,12 +16,17 @@ public class PersoonController {
         Iterable<Persoon> personen;
         if (achternaam.isEmpty()) {
             personen = persoonService.findAll();
-        }
-        else {
+        } else {
             personen = persoonService.findByLastname(achternaam);
         }
         return ResponseEntity.ok(personen);
     }
+
+//    @GetMapping(value = "/personen")
+//    public ResponseEntity getPersonen() {
+//        Iterable<Persoon> personen = persoonService.findAll();
+//        return ResponseEntity.ok(personen);
+//    }
 
     @GetMapping(value = "/personen/{nr}")
     public ResponseEntity getPersoon(@PathVariable long nr) {
@@ -42,8 +46,9 @@ public class PersoonController {
         return ResponseEntity.ok("Verwijderd");
     }
 
-    @PutMapping(value = "/personen/{nr}")
-    public ResponseEntity updatePersoon(@PathVariable long nr, @RequestBody Persoon persoon) {
-        return ResponseEntity.ok("Aangepast");
-    }
+//    @PutMapping(value = "/personen/{nr}")
+//    public ResponseEntity<Object> updatePersoon(@PathVariable long nr, @RequestBody Persoon persoon) {
+//        persoonService.updatePersoon(nr, persoon);
+//        return ResponseEntity.ok("Aangepast");
+//    }
 }

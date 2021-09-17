@@ -8,22 +8,21 @@ import org.springframework.web.bind.annotation.RestController;
 public class BaseController {
 
     @GetMapping(value = "/")
-    public String sayHello(@RequestParam(required = false) String naam) {
-        if (naam == null) {
-            return "Hello world";
-        }
-        else {
-            return "Hello " + naam + "!";
-        }
+    public String sayHello() {
+        return "Hello World!";
     }
 
-    @GetMapping(value = "/peter")
-    public String sayPeter() {
-        return "Hello Peter!";
+    @GetMapping(value = "/danielle")
+    public String sayDanielle() {
+        return "Hello Danielle!";
     }
 
-    @GetMapping(value = "/info")
-    public String info() {
-        return "This is my frist great Webservice endpoint!!!";
+    @GetMapping("/name")
+    public String getName(@RequestParam(required = false) String name) {
+        if (name == null) {
+            return "Hello you!";
+        } else {
+            return "Hello " + name + "!";
+        }
     }
 }
